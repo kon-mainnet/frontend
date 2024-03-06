@@ -6,7 +6,7 @@ export const NFT_TOKEN_TYPES: Array<{ title: string; id: NFTTokenType }> = [
 ];
 
 export const TOKEN_TYPES: Array<{ title: string; id: TokenType }> = [
-  { title: 'ERC-20', id: 'ERC-20' },
+  { title: 'KONET-20', id: 'ERC-20' },
   ...NFT_TOKEN_TYPES,
 ];
 

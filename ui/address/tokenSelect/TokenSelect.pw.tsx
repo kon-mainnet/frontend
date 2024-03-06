@@ -107,7 +107,7 @@ test('sort', async({ mount, page }) => {
     { hooksConfig },
   );
   await page.getByRole('button', { name: /select/i }).click();
-  await page.locator('a[aria-label="Sort ERC-20 tokens"]').click();
+  await page.locator('a[aria-label="Sort KONET-20 tokens"]').click();
 
   await expect(page).toHaveScreenshot({ clip: CLIPPING_AREA });
 
