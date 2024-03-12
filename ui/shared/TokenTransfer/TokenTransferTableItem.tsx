@@ -12,6 +12,7 @@ import TokenEntity from 'ui/shared/entities/token/TokenEntity';
 import TxEntity from 'ui/shared/entities/tx/TxEntity';
 import { getTokenTransferTypeText } from 'ui/shared/TokenTransfer/helpers';
 import TxAdditionalInfo from 'ui/txs/TxAdditionalInfo';
+import { getTypeLabel } from 'ui/address/utils/tokenUtils';
 
 type Props = TokenTransfer & {
   baseAddress?: string;
@@ -60,7 +61,7 @@ const TokenTransferTableItem = ({
             noCopy
             my="2px"
           />
-          <Tag isLoading={ isLoading }>{ token.type }</Tag>
+          <Tag isLoading={ isLoading }>{ getTypeLabel(token.type) }</Tag>
           <Tag colorScheme="orange" isLoading={ isLoading }>{ getTokenTransferTypeText(type) }</Tag>
         </Flex>
       </Td>

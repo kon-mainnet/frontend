@@ -113,7 +113,7 @@ test('sort', async({ mount, page }) => {
 
   await page.mouse.move(100, 200);
   await page.mouse.wheel(0, 1000);
-  await page.locator('a[aria-label="Sort ERC-1155 tokens"]').click();
+  await page.locator('a[aria-label="Sort KONET-1155 tokens"]').click();
 
   await expect(page).toHaveScreenshot({ clip: CLIPPING_AREA });
 });

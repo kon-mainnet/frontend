@@ -6,12 +6,19 @@ export default function urlParser(maybeUrl: string): URL | undefined {
   } catch (error) {}
 }
 
-function constructUrl(maybeUrl: string) {
-  if (regexp.IPFS_PREFIX.test(maybeUrl)) {
-    return new URL(maybeUrl.replace(regexp.IPFS_PREFIX, 'https://ipfs.io/ipfs/'));
-  }
+function isIpfsHash(hash: string) {
+  // IPFS 해시의 기본 패턴 검사
+  const pattern = /^[Qm][1-9A-Za-z]{44}$/;
+  return pattern.test(hash);
+}
 
-  if (regexp.URL_PREFIX.test(maybeUrl)) {
+function constructUrl(maybeUrl: string) {
+  if (isIpfsHash(maybeUrl)) {
+    // IPFS 해시인 경우 변환 로직 추가
+    return new URL(`https://ipfs.io/ipfs/${ maybeUrl }`);
+  } else if (regexp.IPFS_PREFIX.test(maybeUrl)) {
+    return new URL(maybeUrl.replace(regexp.IPFS_PREFIX, 'https://ipfs.io/ipfs/'));
+  } else if (regexp.URL_PREFIX.test(maybeUrl)) {
     return new URL(maybeUrl);
   }
 }

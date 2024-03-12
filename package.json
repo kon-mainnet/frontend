@@ -32,6 +32,7 @@
     "favicon:generate:dev": "./tools/scripts/favicon-generator.dev.sh"
   },
   "dependencies": {
+    "react-query": "3.39.3",
     "@chakra-ui/react": "2.7.1",
     "@chakra-ui/theme-tools": "^2.0.18",
     "@emotion/react": "^11.10.4",

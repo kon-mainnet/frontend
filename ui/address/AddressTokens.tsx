@@ -107,7 +107,7 @@ const AddressTokens = () => {
   const hasActiveFilters = Boolean(tokenTypes?.length);
 
   const tabs = [
-    { id: 'tokens_erc20', title: 'ERC-20', component: <ERC20Tokens tokensQuery={ erc20Query }/> },
+    { id: 'tokens_erc20', title: 'KONNET-20', component: <ERC20Tokens tokensQuery={ erc20Query }/> },
     {
       id: 'tokens_nfts',
       title: 'NFTs',

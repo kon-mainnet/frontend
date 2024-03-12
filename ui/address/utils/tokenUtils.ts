@@ -105,4 +105,17 @@ export const getTokensTotalInfo = (data: TokenSelectData) => {
   return { usd, num, isOverflow };
 };
 
+export const getTypeLabel = (type: string) => {
+  switch(type) {
+    case 'ERC-20':
+      return 'KONET-20';
+    case 'ERC-721':
+      return 'KONET-721';
+    case 'ERC-1155':
+      return 'KONET-1155';
+    default:
+      return type;
+  }
+}
+
 const usdValueReducer = (result: BigNumber, item: TokenEnhancedData) => !item.usd ? result : result.plus(BigNumber(item.usd));

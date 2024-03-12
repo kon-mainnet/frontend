@@ -9,7 +9,7 @@ import type { TokenType } from 'types/api/token';
 import IconSvg from 'ui/shared/IconSvg';
 
 import type { Sort } from '../utils/tokenUtils';
-import { sortTokenGroups, sortingFns } from '../utils/tokenUtils';
+import { sortTokenGroups, sortingFns, getTypeLabel } from '../utils/tokenUtils';
 import TokenSelectItem from './TokenSelectItem';
 
 interface Props {
@@ -68,7 +68,7 @@ const TokenSelectMenu = ({ erc20sort, erc1155sort, filteredData, onInputChange, 
           return (
             <Box key={ type }>
               <Flex justifyContent="space-between">
-                <Text mb={ 3 } color="gray.500" fontWeight={ 600 } fontSize="sm">{ type } tokens ({ numPrefix }{ tokenInfo.items.length })</Text>
+                <Text mb={ 3 } color="gray.500" fontWeight={ 600 } fontSize="sm">{ getTypeLabel(type) } tokens ({ numPrefix }{ tokenInfo.items.length })</Text>
                 { hasSort && (
                   <Link data-type={ type } onClick={ onSortClick } aria-label={ `Sort ${ type } tokens` }>
                     <IconSvg name="arrows/east" boxSize={ 5 } transform={ arrowTransform } transitionDuration="faster"/>

@@ -18,7 +18,7 @@ export type SearchResultAppItem = {
 export const searchCategories: Array<{id: Category; title: string }> = [
   { id: 'app', title: 'DApps' },
   { id: 'token', title: 'Tokens (KONET-20)' },
-  { id: 'nft', title: 'NFTs (ERC-721 & 1155)' },
+  { id: 'nft', title: 'NFTs (KONET-721 & KONET-1155)' },
   { id: 'address', title: 'Addresses' },
   { id: 'public_tag', title: 'Public tags' },
   { id: 'transaction', title: 'Transactions' },

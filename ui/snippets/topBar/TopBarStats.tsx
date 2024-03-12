@@ -48,7 +48,7 @@ const TopBarStats = () => {
       fontSize="xs"
       fontWeight={ 500 }
     >
-      { data?.coin_price && (
+      {/* { data?.coin_price && (
         <Flex columnGap={ 1 }>
           <Skeleton isLoaded={ !isPlaceholderData }>
             <chakra.span color="text_secondary">{ config.chain.governanceToken.symbol || config.chain.currency.symbol } </chakra.span>
@@ -73,7 +73,7 @@ const TopBarStats = () => {
             </Link>
           </GasInfoTooltip>
         </Skeleton>
-      ) }
+      ) } */}
     </Flex>
   );
 };

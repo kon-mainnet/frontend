@@ -40,6 +40,7 @@ import TokenHolders from 'ui/token/TokenHolders/TokenHolders';
 import TokenInventory from 'ui/token/TokenInventory';
 import TokenTransfer from 'ui/token/TokenTransfer/TokenTransfer';
 import TokenVerifiedInfo from 'ui/token/TokenVerifiedInfo';
+import { getTypeLabel } from 'ui/address/utils/tokenUtils';
 
 export type TokenTabs = 'token_transfers' | 'holders' | 'inventory';
 
@@ -257,7 +258,7 @@ const TokenPageContent = () => {
         data={ contractQuery.data }
         isLoading={ tokenQuery.isPlaceholderData || contractQuery.isPlaceholderData }
         tagsBefore={ [
-          tokenQuery.data ? { label: tokenQuery.data?.type, display_name: tokenQuery.data?.type } : undefined,
+          tokenQuery.data ? { label: getTypeLabel(tokenQuery.data?.type), display_name: getTypeLabel(tokenQuery.data?.type)} : undefined,
           config.features.bridgedTokens.isEnabled && tokenQuery.data?.is_bridged ?
             { label: 'bridged', display_name: 'Bridged', colorScheme: 'blue', variant: 'solid' } :
             undefined,
