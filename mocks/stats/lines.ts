@@ -31,8 +31,8 @@ export const base = {
         {
           id: 'averageTxnFee',
           title: 'Average transaction fee',
-          description: 'The average amount in ETH spent per transaction',
-          units: 'ETH',
+          description: 'The average amount in KONET spent per transaction',
+          units: 'KONET',
         },
         {
           id: 'newTxns',
@@ -44,7 +44,7 @@ export const base = {
           id: 'txnsFee',
           title: 'Transactions fees',
           description: 'Amount of tokens paid as fees',
-          units: 'ETH',
+          units: 'KONET',
         },
         {
           id: 'txnsGrowth',
@@ -68,7 +68,7 @@ export const base = {
           id: 'averageBlockRewards',
           title: 'Average block rewards',
           description: 'Average amount of distributed reward in tokens per day',
-          units: 'ETH',
+          units: 'KONET',
         },
         {
           id: 'averageBlockSize',
@@ -90,7 +90,7 @@ export const base = {
       charts: [
         {
           id: 'newNativeCoinTransfers',
-          title: 'New ETH transfers',
+          title: 'New KONET transfers',
           description: 'New token transfers number for the period',
           units: null,
         },

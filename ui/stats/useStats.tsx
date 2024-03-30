@@ -36,7 +36,16 @@ export default function useStats() {
 
         return {
           ...section,
-          charts,
+          charts: charts.map((chart) => {
+            const { id, title, description, units } = chart;
+
+            return {
+              id,
+              title: title && title.replace("ETH", "KONET"),
+              description: description && description.replace("ETH", "KONET"),
+              units: units && units.replace("ETH", "KONET")
+            }
+          }),
         };
       }).filter((section) => section.charts.length > 0);
   }, [ currentSection, data?.sections, debouncedFilterQuery ]);

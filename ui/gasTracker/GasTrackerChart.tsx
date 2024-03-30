@@ -37,13 +37,13 @@ const GasTrackerChart = () => {
 
     return (
       <ChartWidgetContainer
-        id={ GAS_PRICE_CHART_ID }
-        title={ chart.title }
-        description={ chart.description }
+        id={GAS_PRICE_CHART_ID}
+        title={chart.title ? chart.title.replace("ETH", "KONET") : ""}
+        description={chart.description ? chart.description.replace("ETH", "KONET") : ""}
         interval="oneMonth"
-        units={ chart.units || undefined }
-        isPlaceholderData={ isPlaceholderData }
-        onLoadingError={ setChartLoadingError.on }
+        units={chart.units ? chart.units.replace("ETH", "KONET") : undefined}
+        isPlaceholderData={isPlaceholderData}
+        onLoadingError={setChartLoadingError.on}
         h="320px"
       />
     );
