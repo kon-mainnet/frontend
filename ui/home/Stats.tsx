@@ -67,7 +67,7 @@ const Stats = () => {
 
     content = (
       <>
-        { rollupFeature.isEnabled && rollupFeature.type === 'zkEvm' ? (
+        { /* rollupFeature.isEnabled && rollupFeature.type === 'zkEvm' ? (
           <StatsItem
             icon="txn_batches"
             title="Latest batch"
@@ -83,7 +83,7 @@ const Stats = () => {
             url={ route({ pathname: '/blocks' }) }
             isLoading={ isPlaceholderData }
           />
-        ) }
+        ) */ }
         { hasAvgBlockTime && (
           <StatsItem
             icon="clock-light"
