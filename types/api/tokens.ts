@@ -28,7 +28,7 @@ export interface TokenInstanceTransferPagination {
 }
 
 export interface TokensSorting {
-  sort: 'fiat_value' | 'holder_count' | 'circulating_market_cap';
+  sort: 'fiat_value' | 'holder_count' | 'circulating_market_cap' | 'total_supply';
   order: 'asc' | 'desc';
 }
 

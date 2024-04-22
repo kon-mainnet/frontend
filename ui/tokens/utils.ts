@@ -14,6 +14,8 @@ export const SORT_OPTIONS: Array<Option<TokensSortingValue>> = [
   { title: 'Holders descending', id: 'holder_count-desc' },
   { title: 'On-chain market cap ascending', id: 'circulating_market_cap-asc' },
   { title: 'On-chain market cap descending', id: 'circulating_market_cap-desc' },
+  { title: 'Total Supply ascending', id: 'total_supply-asc' },
+  { title: 'Total Supply descending', id: 'total_supply-desc' },
 ];
 
 export const getTokenFilterValue = (getFilterValuesFromQuery<TokenType>).bind(null, TOKEN_TYPE_IDS);

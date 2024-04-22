@@ -55,8 +55,8 @@ const NetworkLogo = ({ isCollapsed, onClick, imageProps }: Props) => {
     <Box
       as="a"
       href={ route({ pathname: '/' }) }
-      width={{ base: '120px', lg: isCollapsed === false ? '120px' : '30px', xl: isCollapsed ? '30px' : '120px' }}
-      height={{ base: '24px', lg: isCollapsed === false ? '24px' : '30px', xl: isCollapsed ? '30px' : '24px' }}
+      width={{ base: '240px', lg: isCollapsed === false ? '240px' : '30px', xl: isCollapsed ? '30px' : '240px' }}
+      height={{ base: '48px', lg: isCollapsed === false ? '48px' : '30px', xl: isCollapsed ? '30px' : '48px' }}
       display="inline-flex"
       overflow="hidden"
       onClick={ onClick }
@@ -65,14 +65,19 @@ const NetworkLogo = ({ isCollapsed, onClick, imageProps }: Props) => {
     >
       { /* big logo */ }
       <Image
-        w="auto"
-        h="100%"
-        src={ logoSrc }
-        alt={ `${ config.chain.name } network logo` }
-        fallback={ <LogoFallback isCollapsed={ isCollapsed } imageProps={ imageProps }/> }
+        src={logoSrc}
+        alt={`${config.chain.name} network logo`}
+        fallback={<Skeleton width="100%" height="100%" />}
+        objectFit="contain"
+        width="100%"
+        height="100%"
+        position="absolute"
+        top="50%"
+        left="50%"
+        transform="translate(-50%, -50%) scale(1.5)"
         display={{ base: 'block', lg: isCollapsed === false ? 'block' : 'none', xl: isCollapsed ? 'none' : 'block' }}
-        style={ logoStyle }
-        { ...imageProps }
+        style={logoStyle}
+        {...imageProps}
       />
       { /* small logo */ }
       <Image

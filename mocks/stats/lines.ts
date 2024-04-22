@@ -58,6 +58,12 @@ export const base = {
           description: 'Successful transactions rate per day',
           units: null,
         },
+        {
+          id: "burntTxnFees",
+          title: "Burnt transactions fees",
+          description: "Amount of tokens burnt as fees",
+          units: "KONET"
+        },
       ],
     },
     {

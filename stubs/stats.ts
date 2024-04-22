@@ -69,6 +69,12 @@ export const STATS_CHARTS_SECTION: StatsChartsSection = {
       description: 'Cumulative transactions number',
       units: null,
     },
+    {
+      id: "chart_4",
+      title: "Burnt transactions fees",
+      description: "Amount of tokens burnt as fees",
+      units: "KONET"
+    }
   ],
 };
 

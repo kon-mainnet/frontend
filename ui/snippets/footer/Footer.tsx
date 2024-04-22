@@ -38,40 +38,22 @@ const Footer = () => {
       url: issueUrl,
     },
     {
-      icon: 'social/canny' as const,
-      iconSize: '20px',
-      text: 'Feature request',
-      url: 'https://blockscout.canny.io/feature-requests',
-    },
-    {
       icon: 'social/git' as const,
       iconSize: '18px',
       text: 'Contribute',
-      url: 'https://github.com/blockscout/blockscout',
+      url: 'https://github.com/kon-mainnet/blockscout',
     },
     {
       icon: 'social/tweet' as const,
       iconSize: '18px',
       text: 'Twitter',
-      url: 'https://www.twitter.com/blockscoutcom',
-    },
-    {
-      icon: 'social/discord' as const,
-      iconSize: '24px',
-      text: 'Discord',
-      url: 'https://discord.gg/blockscout',
+      url: 'https://www.twitter.com/KONET_Official',
     },
     {
       icon: 'discussions' as const,
       iconSize: '20px',
       text: 'Discussions',
-      url: 'https://github.com/orgs/blockscout/discussions',
-    },
-    {
-      icon: 'donate' as const,
-      iconSize: '20px',
-      text: 'Donate',
-      url: 'https://github.com/sponsors/blockscout',
+      url: 'https://github.com/orgs/kon-mainnet/discussions',
     },
   ];
 
@@ -118,9 +100,9 @@ const Footer = () => {
   const renderProjectInfo = React.useCallback((gridArea?: GridProps['gridArea']) => {
     return (
       <Box gridArea={ gridArea }>
-        <Link fontSize="xs" href="https://www.blockscout.com">blockscout.com</Link>
+        <Link fontSize="xs" href="https://konetexplorer.io">konetexplorer.io</Link>
         <Text mt={ 3 } fontSize="xs">
-          Blockscout is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Konet Networks.
+          Konet Explorer is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Konet Networks.
         </Text>
         <VStack spacing={ 1 } mt={ 6 } alignItems="start">
           { apiVersionUrl && (
@@ -166,7 +148,7 @@ const Footer = () => {
           justifyContent={{ lg: 'flex-end' }}
           mt={{ base: 8, lg: 0 }}
         >
-          {
+          {/* {
             ([
               { title: 'Blockscout', links: BLOCKSCOUT_LINKS },
               ...(linksData || []),
@@ -180,7 +162,7 @@ const Footer = () => {
                   </VStack>
                 </Box>
               ))
-          }
+          } */}
         </Grid>
       </Grid>
     );
