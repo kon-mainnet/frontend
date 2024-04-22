@@ -15,9 +15,9 @@ function isIpfsHash(hash: string) {
 function constructUrl(maybeUrl: string) {
   if (isIpfsHash(maybeUrl)) {
     // IPFS 해시인 경우 변환 로직 추가
-    return new URL(`https://ipfs.io/ipfs/${ maybeUrl }`);
+    return new URL(`https://cdn.eggverse.io/ipfs/${ maybeUrl }`);
   } else if (regexp.IPFS_PREFIX.test(maybeUrl)) {
-    return new URL(maybeUrl.replace(regexp.IPFS_PREFIX, 'https://ipfs.io/ipfs/'));
+    return new URL(maybeUrl.replace(regexp.IPFS_PREFIX, 'https://cdn.eggverse.io/ipfs/'));
   } else if (regexp.URL_PREFIX.test(maybeUrl)) {
     return new URL(maybeUrl);
   }
