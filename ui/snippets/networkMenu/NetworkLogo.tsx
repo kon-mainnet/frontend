@@ -65,19 +65,14 @@ const NetworkLogo = ({ isCollapsed, onClick, imageProps }: Props) => {
     >
       { /* big logo */ }
       <Image
-        src={logoSrc}
-        alt={`${config.chain.name} network logo`}
-        fallback={<Skeleton width="100%" height="100%" />}
-        objectFit="contain"
-        width="100%"
-        height="100%"
-        position="absolute"
-        top="50%"
-        left="50%"
-        transform="translate(-50%, -50%) scale(1.5)"
+        w="auto"
+        h="100%"
+        src={ logoSrc }
+        alt={ `${ config.chain.name } network logo` }
+        fallback={ <LogoFallback isCollapsed={ isCollapsed } imageProps={ imageProps }/> }
         display={{ base: 'block', lg: isCollapsed === false ? 'block' : 'none', xl: isCollapsed ? 'none' : 'block' }}
-        style={logoStyle}
-        {...imageProps}
+        style={ logoStyle }
+        { ...imageProps }
       />
       { /* small logo */ }
       <Image
