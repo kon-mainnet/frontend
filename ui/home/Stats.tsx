@@ -41,7 +41,7 @@ const Stats = () => {
 
   const lastItemTouchStyle = { gridColumn: { base: 'span 2', lg: 'unset' } };
 
-  let itemsCount = 5;
+  let itemsCount = 6;
   !hasGasTracker && itemsCount--;
   !hasAvgBlockTime && itemsCount--;
 
@@ -67,23 +67,6 @@ const Stats = () => {
 
     content = (
       <>
-        { /* rollupFeature.isEnabled && rollupFeature.type === 'zkEvm' ? (
-          <StatsItem
-            icon="txn_batches"
-            title="Latest batch"
-            value={ (zkEvmLatestBatchQuery.data || 0).toLocaleString() }
-            url={ route({ pathname: '/batches' }) }
-            isLoading={ zkEvmLatestBatchQuery.isPlaceholderData }
-          />
-        ) : (
-          <StatsItem
-            icon="block"
-            title="Total blocks"
-            value={ Number(data.total_blocks).toLocaleString() }
-            url={ route({ pathname: '/blocks' }) }
-            isLoading={ isPlaceholderData }
-          />
-        ) */ }
         { hasAvgBlockTime && (
           <StatsItem
             icon="clock-light"
@@ -106,6 +89,20 @@ const Stats = () => {
           _last={ isOdd ? lastItemTouchStyle : undefined }
           isLoading={ isPlaceholderData }
         />
+        <StatsItem
+          icon="token"
+          title="Total burnt"
+          value={ Number(600.952).toLocaleString() }
+          url={ route({ pathname: '/stats' }) }
+          isLoading={ isPlaceholderData }
+        />
+        <StatsItem
+          icon="token"
+          title="Total circulating"
+          value={ "999.999M" }
+          url={ route({ pathname: '/stats' }) }
+          isLoading={ isPlaceholderData }
+        />
         { data.gas_prices && (
           <StatsItem
             icon="gas"
@@ -113,15 +110,6 @@ const Stats = () => {
             value={ <GasPrice data={ data.gas_prices.average }/> }
             _last={ isOdd ? lastItemTouchStyle : undefined }
             tooltip={ gasInfoTooltip }
-            isLoading={ isPlaceholderData }
-          />
-        ) }
-        { data.rootstock_locked_btc && (
-          <StatsItem
-            icon="coins/bitcoin"
-            title="BTC Locked in 2WP"
-            value={ `${ BigNumber(data.rootstock_locked_btc).div(WEI).dp(0).toFormat() } RBTC` }
-            _last={ isOdd ? lastItemTouchStyle : undefined }
             isLoading={ isPlaceholderData }
           />
         ) }

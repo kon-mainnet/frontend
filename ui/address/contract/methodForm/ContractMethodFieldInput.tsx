@@ -85,7 +85,7 @@ const ContractMethodFieldInput = ({ data, hideLabel, path: name, className, isDi
           />
           <InputRightElement w="auto" right={ 1 }>
             { typeof field.value === 'string' && field.value.replace('\n', '') && <ClearButton onClick={ handleClear } isDisabled={ isDisabled }/> }
-            { hasMultiplyButton && <ContractMethodMultiplyButton onClick={ handleMultiplyButtonClick } isDisabled={ isDisabled }/> }
+            {/* { hasMultiplyButton && <ContractMethodMultiplyButton onClick={ handleMultiplyButtonClick } isDisabled={ isDisabled }/> } */}
           </InputRightElement>
         </InputGroup>
         { error && <Box color="error" fontSize="sm" lineHeight={ 5 } mt={ 1 }>{ error.message }</Box> }

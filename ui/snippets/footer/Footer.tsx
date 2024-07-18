@@ -148,7 +148,7 @@ const Footer = () => {
           justifyContent={{ lg: 'flex-end' }}
           mt={{ base: 8, lg: 0 }}
         >
-          {/* {
+          {
             ([
               { title: 'Blockscout', links: BLOCKSCOUT_LINKS },
               ...(linksData || []),
@@ -162,7 +162,7 @@ const Footer = () => {
                   </VStack>
                 </Box>
               ))
-          } */}
+          }
         </Grid>
       </Grid>
     );

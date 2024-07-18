@@ -63,4 +63,5 @@ function filterOurEmptyItems(array: Array<unknown>): Array<unknown> {
 export function getFieldLabel(input: SmartContractMethodInput, isRequired?: boolean) {
   const name = input.name || input.internalType || '<unnamed argument>';
   return `${ name } (${ input.type })${ isRequired ? '*' : '' }`;
+  // return `${name}${input.type.includes('uint') ? '' : ` (${input.type})`}${isRequired ? '*' : ''}`;
 }

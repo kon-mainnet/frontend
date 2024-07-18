@@ -29,6 +29,7 @@ const TokensTableItem = ({
   index,
   isLoading,
 }: Props) => {
+
   const {
     address,
     exchange_rate: exchangeRate,
@@ -36,8 +37,8 @@ const TokensTableItem = ({
     holders,
     circulating_market_cap: marketCap,
     origin_chain_id: originalChainId,
-    total_supply,
-    decimals
+    decimals,
+    total_supply
   } = token;
 
   const bridgedChainTag = bridgedTokensFeature.isEnabled ?
@@ -78,13 +79,23 @@ const TokensTableItem = ({
         />
         <AddressAddToWallet token={ token } isLoading={ isLoading }/>
       </Flex>
+      { total_supply && (
+        <HStack spacing={ 3 }>
+          <Skeleton isLoaded={ !isLoading } fontSize="sm" fontWeight={ 500 }>Total Supply</Skeleton>
+          <Skeleton isLoaded={ !isLoading } fontSize="sm" color="text_secondary">
+            <span>{ (Number(total_supply) / (10 ** Number(decimals))).toLocaleString(undefined, { minimumSignificantDigits: 4 }) }</span>
+          </Skeleton>
+        </HStack>
+      ) }
+      {/* { marketCap && (
+        <HStack spacing={ 3 }>
+          <Skeleton isLoaded={ !isLoading } fontSize="sm" fontWeight={ 500 }>On-chain market cap</Skeleton>
+          <Skeleton isLoaded={ !isLoading } fontSize="sm" color="text_secondary"><span>{ BigNumber(marketCap).toFormat() }</span></Skeleton>
+        </HStack>
+      ) } */}
       <HStack spacing={ 3 }>
-        <Skeleton isLoaded={ !isLoading } fontSize="sm" fontWeight={ 500 }>Holders</Skeleton>
+        <Skeleton isLoaded={ !isLoading } fontSize="sm" fontWeight={ 500 }>Holders 2</Skeleton>
         <Skeleton isLoaded={ !isLoading } fontSize="sm" color="text_secondary"><span>{ Number(holders).toLocaleString() }</span></Skeleton>
-      </HStack>
-      <HStack spacing={ 3 }>
-        <Skeleton isLoaded={ !isLoading } fontSize="sm" fontWeight={ 500 }>Total Supply</Skeleton>
-        <Skeleton isLoaded={ !isLoading } fontSize="sm" color="text_secondary"><span>{ (Number(total_supply) / (10**Number(decimals))).toLocaleString() }</span></Skeleton>
       </HStack>
     </ListItemMobile>
   );

@@ -1,13 +1,11 @@
+import React, { useEffect, useState } from 'react';
 import { Grid } from '@chakra-ui/react';
-import React from 'react';
-
 import useApiQuery from 'lib/api/useApiQuery';
 import { STATS_COUNTER } from 'stubs/stats';
 import StatsWidget from 'ui/shared/stats/StatsWidget';
-
 import DataFetchAlert from '../shared/DataFetchAlert';
 
-const UNITS_WITHOUT_SPACE = [ 's' ];
+const UNITS_WITHOUT_SPACE = ['s'];
 
 const NumberWidgetsList = () => {
   const { data, isPlaceholderData, isError } = useApiQuery('stats_counters', {
@@ -17,17 +15,18 @@ const NumberWidgetsList = () => {
   });
 
   if (isError) {
-    return <DataFetchAlert/>;
+    return <DataFetchAlert />;
   }
+
+  const StatsWidgetData = [...(data?.counters || [])];
 
   return (
     <Grid
       gridTemplateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }}
-      gridGap={ 4 }
+      gridGap={4}
     >
       {
-        data?.counters?.map(({ id, title, value, units, description }, index) => {
-
+        StatsWidgetData?.map(({ id, title, value, units, description }, index) => {
           let unitsStr = '';
           if (UNITS_WITHOUT_SPACE.includes(units)) {
             unitsStr = units;
@@ -35,13 +34,15 @@ const NumberWidgetsList = () => {
             unitsStr = ' ' + units;
           }
 
+          console.log(id, title, value, units, description)
+
           return (
             <StatsWidget
-              key={ id + (isPlaceholderData ? index : '') }
-              label={ title && title.replace("ETH", "KONET") }
-              value={ `${ Number(value).toLocaleString(undefined, { maximumFractionDigits: 3, notation: 'compact' }) }${ unitsStr }` }
-              isLoading={ isPlaceholderData }
-              hint={ description && description.replace("ETH", "KONET") }
+              key={id + (isPlaceholderData ? index : '')}
+              label={title.replace("ETH", "KONET")}
+              value={`${Number(value.replace("ETH", "KONET")).toLocaleString(undefined, { maximumFractionDigits: 3, notation: 'compact' })}${unitsStr.replace("ETH", "KONET")}`}
+              isLoading={isPlaceholderData}
+              hint={description}
             />
           );
         })

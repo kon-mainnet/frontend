@@ -14,7 +14,7 @@ const SORT_SEQUENCE: Record<TokensSortingField, Array<TokensSortingValue | undef
   fiat_value: [ 'fiat_value-desc', 'fiat_value-asc', undefined ],
   holder_count: [ 'holder_count-desc', 'holder_count-asc', undefined ],
   circulating_market_cap: [ 'circulating_market_cap-desc', 'circulating_market_cap-asc', undefined ],
-  total_supply: [ 'total_supply-desc', 'total_supply-asc', undefined]
+  total_supply: ['total_supply-desc', 'total_supply-asc', undefined]
 };
 
 const getNextSortValue = (getNextSortValueShared<TokensSortingField, TokensSortingValue>).bind(undefined, SORT_SEQUENCE);
@@ -41,15 +41,21 @@ const TokensTable = ({ items, page, isLoading, sorting, setSorting }: Props) => 
         <Tr>
           <Th w="70%">Token</Th>
           <Th isNumeric w="15%">
+            <Link onClick={ sort('fiat_value') } display="flex" justifyContent="end">
+              { sorting?.includes('fiat_value') && <IconSvg name="arrows/east-mini" boxSize={ 4 } transform={ sortIconTransform }/> }
+              Total Supply
+            </Link>
+          </Th>
+          {/* <Th isNumeric w="20%">
+            <Link onClick={ sort('circulating_market_cap') } display="flex" justifyContent="end">
+              { sorting?.includes('circulating_market_cap') && <IconSvg name="arrows/east-mini" boxSize={ 4 } transform={ sortIconTransform }/> }
+              On-chain market cap
+            </Link>
+          </Th> */}
+          <Th isNumeric w="15%">
             <Link onClick={ sort('holder_count') } display="flex" justifyContent="end">
               { sorting?.includes('holder_count') && <IconSvg name="arrows/east-mini" boxSize={ 4 } transform={ sortIconTransform }/> }
               Holders
-            </Link>
-          </Th>
-          <Th isNumeric w="15%">
-            <Link onClick={ sort('total_supply') } display="flex" justifyContent="end">
-              { sorting?.includes('total_supply') && <IconSvg name="arrows/east-mini" boxSize={ 4 } transform={ sortIconTransform }/> }
-              Total Supply
             </Link>
           </Th>
         </Tr>
