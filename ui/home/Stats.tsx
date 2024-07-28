@@ -96,14 +96,14 @@ const Stats = () => {
         <StatsItem
           icon="token"
           title="Total burnt"
-          value={ Number(data2.counters.filter(a => a.id === 'totalBurntNativeCoin')[0].value).toLocaleString() }
+          value={ Number(data2.counters?.filter(a => a.id === 'totalBurntNativeCoin')[0]?.value).toLocaleString() }
           url={ route({ pathname: '/stats' }) }
           isLoading={ isPlaceholderData2 }
         />
         <StatsItem
           icon="token"
           title="Total circulating"
-          value={ Number(data2.counters.filter(a => a.id === 'totalCirculatingNativeCoin')[0].value).toLocaleString() }
+          value={ Number(data2.counters?.filter(a => a.id === 'totalCirculatingNativeCoin')[0]?.value).toLocaleString() }
           url={ route({ pathname: '/stats' }) }
           isLoading={ isPlaceholderData2 }
         />
