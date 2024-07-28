@@ -1,13 +1,11 @@
 import { Grid } from '@chakra-ui/react';
-import BigNumber from 'bignumber.js';
 import React from 'react';
 
 import { route } from 'nextjs-routes';
 
 import config from 'configs/app';
 import useApiQuery from 'lib/api/useApiQuery';
-import { WEI } from 'lib/consts';
-import { HOMEPAGE_STATS } from 'stubs/stats';
+import { HOMEPAGE_STATS, STATS_COUNTER } from 'stubs/stats';
 import GasInfoTooltip from 'ui/shared/gas/GasInfoTooltip';
 import GasPrice from 'ui/shared/gas/GasPrice';
 import IconSvg from 'ui/shared/IconSvg';
@@ -26,6 +24,12 @@ const Stats = () => {
     },
   });
 
+  const { data: data2, isPlaceholderData: isPlaceholderData2, isError: isError2 } = useApiQuery('stats_counters', {
+    queryOptions: {
+      placeholderData: { counters: Array(10).fill(STATS_COUNTER) },
+    },
+  });
+
   const zkEvmLatestBatchQuery = useApiQuery('homepage_zkevm_latest_batch', {
     queryOptions: {
       placeholderData: 12345,
@@ -33,7 +37,7 @@ const Stats = () => {
     },
   });
 
-  if (isError || zkEvmLatestBatchQuery.isError) {
+  if (isError || isError2 || zkEvmLatestBatchQuery.isError) {
     return null;
   }
 
@@ -45,7 +49,7 @@ const Stats = () => {
   !hasGasTracker && itemsCount--;
   !hasAvgBlockTime && itemsCount--;
 
-  if (data) {
+  if (data && data2) {
     !data.gas_prices && itemsCount--;
     data.rootstock_locked_btc && itemsCount++;
     const isOdd = Boolean(itemsCount % 2);
@@ -92,16 +96,16 @@ const Stats = () => {
         <StatsItem
           icon="token"
           title="Total burnt"
-          value={ Number(600.952).toLocaleString() }
+          value={ Number(data2.counters.filter(a => a.id === 'totalBurntNativeCoin')[0].value).toLocaleString() }
           url={ route({ pathname: '/stats' }) }
-          isLoading={ isPlaceholderData }
+          isLoading={ isPlaceholderData2 }
         />
         <StatsItem
           icon="token"
           title="Total circulating"
-          value={ "999.999M" }
+          value={ Number(data2.counters.filter(a => a.id === 'totalCirculatingNativeCoin')[0].value).toLocaleString() }
           url={ route({ pathname: '/stats' }) }
-          isLoading={ isPlaceholderData }
+          isLoading={ isPlaceholderData2 }
         />
         { data.gas_prices && (
           <StatsItem
